@@ -50,7 +50,7 @@ session_start();
 		$conn->query($sql);
 	}
 
-	$servername = "localhost";
+	$servername = "db";
 	$username = "root";
 	$password = "";
 
