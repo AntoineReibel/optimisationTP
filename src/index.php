@@ -120,7 +120,7 @@ echo '<blockquote>';
     	$total += $row['TotalPrice'];
     }
     echo "<tr><td style='text-align: right;background-color: #f2f2f2;''>";
-    echo "Total: <b>RM".$total."</b><center><form action='checkout.php' method='post'><input class='button' type='submit' name='checkout' value='CHECKOUT'></form></center>";
+    echo "Total: <b>RM".$total. "</b><center><form action='checkout.php' method='post'><input class='button' type='submit' name='checkout' value='CHECKOUT'></form></center>";
     echo "</td></tr>";
 	echo "</table>";
 	echo '</blockquote>';
