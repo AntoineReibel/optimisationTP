@@ -1,29 +1,29 @@
 <?php
+
 include "connectDB.php";
 /** @var PDO $pdo */
 session_start();
-if(isset($_POST['username'])&&isset($_POST['pwd'])){
-    $username=$_POST['username'];
+if (isset($_POST['username']) && isset($_POST['pwd'])) {
+    $username = $_POST['username'];
     $pwd = $_POST['pwd'];
 
-     $sql="SELECT * FROM users WHERE UserName=:username AND Password = :pwd;";
-     $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(
+    $sql = "SELECT * FROM users WHERE UserName=:username AND Password = :pwd;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
         ':username' => $username,
-        ':pwd' => $pwd       
-     ));
-    
-    if($stmt->rowCount()>0){
-        while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
-            $_SESSION['id']=$row['UserID'];
-             }
-        
+        ':pwd' => $pwd,
+    ]);
+
+    if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $_SESSION['id'] = $row['UserID'];
+        }
+
         header("Location:index.php");
-        
-    }else{
+
+    } else {
         echo '<span style="color: red;">Login Fail</span>';
         header("Location:login.php?errcode=1");
     }
-     
+
 }
-?>
