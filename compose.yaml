@@ -7,7 +7,7 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - ./:/var/www/html
+      - ./src:/var/www/html
     environment:
       - MYSQL_DATABASE=bookstore
 
