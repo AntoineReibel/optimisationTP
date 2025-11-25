@@ -1,20 +1,47 @@
 name: Main CI workflow
+
 on:
   push:
+    branches:
+      - master
+
 jobs:
   quality:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: PHPStan
         run: echo "phpstan"
-      - name: PHP CSS Filter
+
+      - name: PHP CS Fixer
         run: echo "php-cs-fixer"
-  build:
+
+  sonarqube:
+    name: SonarQube Analysis
     runs-on: ubuntu-latest
+    needs: quality
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [quality, sonarqube]  # Attend quality ET sonarqube
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Build project
         run: echo "build"
