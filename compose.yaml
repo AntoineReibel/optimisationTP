@@ -2,7 +2,9 @@ services:
   app:
     env_file:
       - .env
-    build: ./docker/php
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 8086:80
     depends_on:

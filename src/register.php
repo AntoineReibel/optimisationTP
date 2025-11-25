@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'connectDB.php';
+/** @var mysqli $conn */
 $nameErr = $emailErr = $genderErr = $addressErr = $icErr = $contactErr = $usernameErr = $passwordErr = "";
 $name = $email = $gender = $address = $ic = $contact = $uname = $upassword = "";
 $cID;
@@ -65,11 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 												}else{
 													$address = $_POST['address'];
 
-													$servername = "localhost";
-													$username = "root";
-													$password = "";
-
-													$conn = new mysqli($servername, $username, $password); 
 
 													if ($conn->connect_error) {
 													    die("Connection failed: " . $conn->connect_error);
