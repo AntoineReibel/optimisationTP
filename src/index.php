@@ -7,10 +7,12 @@ session_start(); ?>
 <link rel="stylesheet" href="style.css">
 <body>
 <?php
+$servername = getenv("APP_DATABASE_HOST");
+$username = getenv("APP_DATABASE_USER");
+$password = getenv("APP_DATABASE_PASSWORD");
+$database = getenv("APP_DATABASE_NAME");
+
 	if(isset($_POST['ac'])){
-        $servername = "db";
-        $username = "root";
-        $password = "";
 
 		$conn = new mysqli($servername, $username, $password);
 
@@ -35,9 +37,6 @@ session_start(); ?>
 	}
 
 	if(isset($_POST['delc'])){
-        $servername = "db";
-        $username = "root";
-        $password = "";
 
 		$conn = new mysqli($servername, $username, $password);
 
@@ -51,10 +50,6 @@ session_start(); ?>
 		$sql = "DELETE FROM cart";
 		$conn->query($sql);
 	}
-
-	$servername = "db";
-	$username = "root";
-	$password = "";
 
 	$conn = new mysqli($servername, $username, $password);
 
