@@ -1,4 +1,5 @@
 <?php
+
 $servername = getenv("APP_DATABASE_HOST");
 $username = getenv("APP_DATABASE_USER");
 $password = getenv("APP_DATABASE_PASSWORD");
@@ -11,5 +12,3 @@ $pdo = new PDO(
 );
 
 $conn = new mysqli($servername, $username, $password);
-
-

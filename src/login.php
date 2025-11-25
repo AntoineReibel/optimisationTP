@@ -21,15 +21,15 @@
 <blockquote>
 <?php
 if (isset($_GET['errcode'])) {
-$errorMessages = [
-    1 => 'Invalid username or password. Please try again.',
-    2 => 'Please login.'
-];
+    $errorMessages = [
+        1 => 'Invalid username or password. Please try again.',
+        2 => 'Please login.',
+    ];
 
-$errcode = intval($_GET['errcode']);
-if (array_key_exists($errcode, $errorMessages)) {
-    echo '<span style="color: red;">' . htmlspecialchars($errorMessages[$errcode]) . '</span>';
-}
+    $errcode = intval($_GET['errcode']);
+    if (array_key_exists($errcode, $errorMessages)) {
+        echo '<span style="color: red;">' . htmlspecialchars($errorMessages[$errcode]) . '</span>';
+    }
 }
 ?>
 </body>

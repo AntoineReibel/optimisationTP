@@ -9,6 +9,8 @@ jobs:
         uses: actions/checkout@v4
       - name: PHPStan
         run: echo "phpstan"
+      - name: PHP CSS Filter
+        run: echo "php-cs-fixer"
   build:
     runs-on: ubuntu-latest
     steps:
