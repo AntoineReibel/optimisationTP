@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once 'connectDB.php';
+/** @var mysqli $conn */
+
+?>
+
 <html>
 <body style="font-family:Arial; margin: 0 auto; background-color: #f2f2f2;">
 <header>
@@ -7,14 +14,8 @@
 </blockquote>
 </header>
 <?php
-session_start();
 
 if(isset($_SESSION['id'])){
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-
-	$conn = new mysqli($servername, $username, $password); 
 
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);

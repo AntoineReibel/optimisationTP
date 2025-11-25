@@ -1,12 +1,12 @@
 <?php
+include "connectDB.php";
+/** @var PDO $pdo */
 session_start();
 if(isset($_POST['username'])&&isset($_POST['pwd'])){
     $username=$_POST['username'];
     $pwd = $_POST['pwd'];
 
-    include "connectDB.php";
-     
-     $sql="SELECT * FROM Users WHERE UserName=:username AND Password = :pwd;";
+     $sql="SELECT * FROM users WHERE UserName=:username AND Password = :pwd;";
      $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':username' => $username,

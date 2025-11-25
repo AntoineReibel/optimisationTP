@@ -1,5 +1,8 @@
 <?php
 session_start();
+require_once 'connectDB.php';
+/** @var mysqli $conn */
+
 $nameErr = $emailErr = $genderErr = $addressErr = $icErr = $contactErr = $usernameErr = $passwordErr = "";
 $name = $email = $gender = $address = $ic = $contact = $uname = $upassword = "";
 $cID;
@@ -11,12 +14,6 @@ $oIC;
 $oEmail;
 $oPhone;
 $oAddress;
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-
-$conn = new mysqli($servername, $username, $password); 
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

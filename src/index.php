@@ -1,5 +1,10 @@
 <?php
-session_start(); ?>
+require_once 'connectDB.php';
+/** @var mysqli $conn */
+session_start();
+?>
+
+
 
 <html>
 <meta http-equiv="Content-Type"'.' content="text/html; charset=utf8"/>
@@ -7,14 +12,10 @@ session_start(); ?>
 <link rel="stylesheet" href="style.css">
 <body>
 <?php
-$servername = getenv("APP_DATABASE_HOST");
-$username = getenv("APP_DATABASE_USER");
-$password = getenv("APP_DATABASE_PASSWORD");
-$database = getenv("APP_DATABASE_NAME");
+
+
 
 	if(isset($_POST['ac'])){
-
-		$conn = new mysqli($servername, $username, $password);
 
 		if ($conn->connect_error) {
 		    die("Connection failed: " . $conn->connect_error);
@@ -38,8 +39,6 @@ $database = getenv("APP_DATABASE_NAME");
 
 	if(isset($_POST['delc'])){
 
-		$conn = new mysqli($servername, $username, $password);
-
 		if ($conn->connect_error) {
 		    die("Connection failed: " . $conn->connect_error);
 		} 
@@ -50,8 +49,6 @@ $database = getenv("APP_DATABASE_NAME");
 		$sql = "DELETE FROM cart";
 		$conn->query($sql);
 	}
-
-	$conn = new mysqli($servername, $username, $password);
 
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
@@ -79,7 +76,7 @@ if(!isset($_SESSION['id'])){
 	echo '<header>';
 	echo '<blockquote>';
 	echo '<a href="index.php"><img src="image/logo.png"></a>';
-	echo '<form class="hf" action="Register.php"><input class="hi" type="submit" name="submitButton" value="Register"></form>';
+	echo '<form class="hf" action="register.php"><input class="hi" type="submit" name="submitButton" value="Register"></form>';
 	echo '<form class="hf" action="login.php"><input class="hi" type="submit" name="submitButton" value="Login"></form>';
 	echo '</blockquote>';
 	echo '</header>';
